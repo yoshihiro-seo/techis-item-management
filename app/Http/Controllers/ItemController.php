@@ -46,6 +46,8 @@ class ItemController extends Controller
                 'user_id' => Auth::user()->id,
                 'name' => $request->name,
                 'type' => $request->type,
+                'author' => $request->author,
+                'price' => $request->price,
                 'detail' => $request->detail,
             ]);
 

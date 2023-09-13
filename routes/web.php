@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// 商品一覧画面
 Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
@@ -33,3 +34,4 @@ Route::get('/user',[App\Http\Controllers\UserController::class, 'users']);
 Route::get('/user/{id}',[App\Http\Controllers\UserController::class, 'edit']);
 
 Route::post('user/userUpdate', [App\Http\Controllers\UserController::class, 'update']);
+

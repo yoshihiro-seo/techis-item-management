@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -39,17 +40,24 @@ class UserController extends Controller
     // ユーザー情報の更新
     public function update(Request $request) {
         $user = User::where('id', '=', $request->id)->first();
-        $user->id = Auth::id();
 
-        if ($user->password === Crypt::encryptString($request->password)) {
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Crypt::encryptString($request->newPassword);
-            $user->role = $request->role;
-            $user->save();
+        // dd($request->all());
+        if($request->newPassword === $request->newPassword2){
+            if (Hash::check($request->password, $user->password)) {
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->password = Hash::make($request->newPassword);
+                $user->role = $request->role;
+                $user->save();
+            } else {
+                // error
+                echo "現在のパスワードが違っています。";
+            } 
         } else {
-            // error
+            echo "新しいパスワードと確認用パスワードは同じ値を入力してください。";
         }
+
+
 
         // ログイン画面にリダイレクト
         return redirect('/login');

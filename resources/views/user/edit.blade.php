@@ -13,7 +13,7 @@
         {{csrf_field()}}
         <div>
             <label for="id">ユーザーID</label>
-            <input type="text" name="id" value="{{old('id', $user->id)}}" class="mb-3" disabled>
+            <input type="text" name="id" value="{{old('id', $user->id)}}" class="mb-3" readonly>
         </div>
         <div>
             <label for="name">名前</label>
