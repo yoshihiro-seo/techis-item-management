@@ -30,7 +30,18 @@
 
                         <div class="form-group">
                             <label for="type">ジャンル</label>
-                            <input type="text" class="form-control" id="type" name="type" placeholder="ジャンル">
+                                <select name="type" id="type" class="form-control">
+                                    <option value="" selected hidden>選択してください</option>
+                                    <option value="1" @if(1 === (int)old('type')) selected @endif>文学・文芸（小説など）</option>
+                                    <option value="2" @if(2 === (int)old('type')) selected @endif>ビジネス</option>
+                                    <option value="3" @if(3 === (int)old('type')) selected @endif>趣味・実用</option>
+                                    <option value="4" @if(4 === (int)old('type')) selected @endif>専門書</option>
+                                    <option value="5" @if(5 === (int)old('type')) selected @endif>学習参考書</option>
+                                    <option value="6" @if(6 === (int)old('type')) selected @endif>絵本・児童書</option>
+                                    <option value="7" @if(7 === (int)old('type')) selected @endif>コミックス</option>
+                                    <option value="8" @if(8 === (int)old('type')) selected @endif>雑誌</option>
+                                    <option value="9" @if(9 === (int)old('type')) selected @endif>その他</option>
+                                </select>
                         </div>
 
                         <div class="form-group">

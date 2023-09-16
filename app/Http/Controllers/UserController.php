@@ -20,9 +20,9 @@ class UserController extends Controller
     public function users(Request $request) {
 
         // usersテーブルのレコードを全件取得する
-        $users = User::orderBy('id', 'asc')->get();
+        $users = User::orderBy('id', 'asc')->paginate(10);
         return view ('user.index', [
-            'user' => $users,
+            'users' => $users,
         ]);
     }
 
@@ -41,7 +41,6 @@ class UserController extends Controller
     public function update(Request $request) {
         $user = User::where('id', '=', $request->id)->first();
 
-        // dd($request->all());
         if($request->newPassword === $request->newPassword2){
             if (Hash::check($request->password, $user->password)) {
                 $user->name = $request->name;
@@ -62,4 +61,15 @@ class UserController extends Controller
         // ログイン画面にリダイレクト
         return redirect('/login');
     }
+
+    // ユーザー削除
+    public function delete(Request $request){
+        $user = User::where('id', '=', $request->id)->first();
+        $user->delete();
+
+        // ユーザー一覧にリダイレクト
+        return redirect('/user');
+    }
+
+
 }

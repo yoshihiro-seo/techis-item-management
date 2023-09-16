@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($user as $user)
+            @foreach($users as $user)
             <tr>
                 <!-- ユーザーID -->
                 <td class="table-text">
@@ -54,5 +54,11 @@
             @endforeach
         </tbody>
     </table>
+
+    <!-- ページネーション -->
+    <div class="d-flex justify-content-center">
+        {{$users->links('pagination::bootstrap-4')}}
+    </div>
+
 </div>
 @stop

@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->index();
-            $table->string('name', 100)->index();
-            $table->tinyInteger('type');
-            $table->string('author', 50)->nullable();
-            $table->integer('price')->nullable();
-            $table->string('detail', 500)->nullable();
+            $table->bigInteger('user_id');
+            $table->bigInteger('book_id');
+            $table->string('status', 20) ->default("active");
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('favorites');
     }
 };

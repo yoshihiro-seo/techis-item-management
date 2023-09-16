@@ -19,18 +19,19 @@ class ItemController extends Controller
     }
 
     /**
-     * 商品一覧
+     * 商品一覧画面
      */
     public function index()
     {
         // 商品一覧取得
-        $items = Item::all();
-
-        return view('item.index', compact('items'));
+        $items = Item::orderBy('id', 'asc')->paginate(10);
+        return view('item.index', [
+            'items' => $items,
+        ]);
     }
 
     /**
-     * 商品登録
+     * 商品登録画面
      */
     public function add(Request $request)
     {
@@ -56,4 +57,71 @@ class ItemController extends Controller
 
         return view('item.add');
     }
+
+    /**
+     * 商品詳細画面
+     * 
+     */
+    public function detail(Request $request) {
+        // 一覧画面で指定された商品IDのレコードを取得
+        $item = Item::where('id', '=', $request->id)->first();
+
+        return view('item.detail')->with([
+            'item' => $item,
+        ]);
+    }
+
+    /**
+     * 商品情報編集画面
+     * 
+     */
+    public function edit(Request $request) {
+        // 一覧画面で指定された商品IDのレコードを取得して表示
+        $item = Item::where('id', '=', $request->id)->first();
+
+        return view('item.edit')->with([
+            'item' => $item,
+        ]);
+    }
+
+    // 商品情報更新
+    public function update(Request $request) {
+        // validation
+        $this->validate($request, [
+            'name'=> 'required | max:100',
+            'type'=> 'required | integer',
+            'author'=> 'max:50',
+            'price'=> 'integer',
+            'datail'=> 'max:500',
+        ],
+        [
+            'name.required' => 'タイトルは必須です。',
+            'name.max:100' => '商品名は100文字以内で入力してください。',
+            'type' => 'ジャンルは必須です。',
+            'author.max:50' => '著者は50文字以内で入力してください。',
+            'price.integer' => '価格は数値で入力してください。',
+            'detail.max:500' => '詳細は500文字以内で入力してください。'
+        ]);
+
+        $item = Item::where('id', '=', $request->id)->first();
+
+        $item->name = $request->name;
+        $item->type = $request->type;
+        $item->author = $request->author;
+        $item->price = $request->price;
+        $item->detail = $request->detail;
+
+        $item->save();
+
+        return redirect('/items');
+    }
+
+    // 商品情報削除
+    public function delete(Request $request) {
+        $item = Item::where('id', '=', $request->id)->first();
+        $item->delete();
+
+        return redirect('/items');
+    }
 }
+
