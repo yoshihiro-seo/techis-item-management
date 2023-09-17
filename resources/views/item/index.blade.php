@@ -15,7 +15,7 @@
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">
-                                <a href="{{ url('items/add') }}" class="btn btn-default">書籍登録</a>
+                                <a href="{{ url('items/add') }}" class="btn btn-primary">書籍登録</a>
                             </div>
                         </div>
                     </div>
@@ -67,19 +67,19 @@
                                     <!-- 著者 -->
                                     <td>{{ $item->author }}</td>
                                     <!-- 価格 -->
-                                    <td>{{ $item->price }}</td>
+                                    <td>{{ number_format($item->price)}}</td>
                                     <!-- 更新日時 -->
                                     <td>{{ $item->updated_at }}</td>
                                     <!-- お気に入り -->
                                     <td>★</td>
                                     <td>
                                         <form action="/items/detail/{{$item->id}}" method="GET">
-                                            <button type="submit">詳細</button>
+                                            <button type="submit" class="btn btn-primary">詳細</button>
                                         </form>
                                     </td>
                                     <td>
                                         <form action="/items/edit/{{$item->id}}" method="GET">
-                                            <button type="submit">編集</button>
+                                            <button type="submit" class="btn btn-primary">編集</button>
                                         </form>
                                     </td>
 

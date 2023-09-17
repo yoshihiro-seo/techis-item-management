@@ -3,7 +3,16 @@
 @section('title', '商品登録')
 
 @section('content_header')
+<!-- 商品一覧画面に戻る -->
+<form action="/items">
+    <div class="text-left">
+        <button type="submit">戻る</button>
+    </div>
+</form>
+<div class="mt-5">
     <h1>商品登録</h1>
+</div>
+
 @stop
 
 @section('content')
@@ -25,7 +34,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">タイトル</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="タイトル">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="タイトル" value="{{old('name')}}">
                         </div>
 
                         <div class="form-group">
@@ -46,17 +55,17 @@
 
                         <div class="form-group">
                             <label for="author">著者</label>
-                            <input type="text" class="form-control" id="author" name="author" placeholder="著者">
+                            <input type="text" class="form-control" id="author" name="author" placeholder="著者" value="{{old('author')}}">
                         </div>
 
                         <div class="form-group">
                             <label for="price">価格</label>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="価格">
+                            <input type="text" class="form-control" id="price" name="price" placeholder="価格" value="{{number_format(old('price'))}}">
                         </div>
 
                         <div class="form-group">
                             <label for="detail">詳細</label>
-                            <textarea class="form-control" id="detail" name="detail" rows="3" placeholder="詳細説明"></textarea>
+                            <textarea class="form-control" id="detail" name="detail" rows="3" placeholder="詳細説明">{{old('detail')}}</textarea>
                         </div>
                     </div>
 

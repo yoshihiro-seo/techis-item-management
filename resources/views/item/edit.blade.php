@@ -2,8 +2,9 @@
 
 @section('title', 'Dashboard')
 
-<!-- 商品一覧画面に戻る -->
+
 @section('content_header')
+<!-- 商品一覧画面に戻る -->
 <form action="/items">
     <div class="text-left">
         <button type="submit">戻る</button>

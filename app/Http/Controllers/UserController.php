@@ -39,10 +39,17 @@ class UserController extends Controller
 
     // ユーザー情報の更新
     public function update(Request $request) {
-        $user = User::where('id', '=', $request->id)->first();
+        $user = User::find($request->id);
+        // バリデーション追加
 
-        if($request->newPassword === $request->newPassword2){
-            if (Hash::check($request->password, $user->password)) {
+        if(!$request->filled('currentPassword')){
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->role = $request->role;
+            $user->save();
+        }
+        elseif($request->newPassword === $request->newPassword2){
+            if (Hash::check($request->currentPassword, $user->password)) {
                 $user->name = $request->name;
                 $user->email = $request->email;
                 $user->password = Hash::make($request->newPassword);
@@ -54,16 +61,15 @@ class UserController extends Controller
             } 
         } else {
             echo "新しいパスワードと確認用パスワードは同じ値を入力してください。";
+            exit;
         }
-
-
-
         // ログイン画面にリダイレクト
         return redirect('/login');
     }
 
     // ユーザー削除
     public function delete(Request $request){
+
         $user = User::where('id', '=', $request->id)->first();
         $user->delete();
 

@@ -298,7 +298,7 @@ return [
         [
             'text' => 'ユーザー一覧',
             'url' => 'user',
-            'icon' => 'fas fa-gamepad',
+            'icon' => 'fas fa-id-card',
         ]
 
         // AdminLTEデフォルト

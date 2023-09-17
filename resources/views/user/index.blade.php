@@ -46,8 +46,8 @@
 
                 <!-- 編集ボタン -->
                 <td>
-                    <form action="/user/{{$user->id}}" method="GET">
-                        <button class="btn-default">編集</button>
+                    <form action="/user/edit/{{$user->id}}" method="GET">
+                        <button class="btn btn-primary">編集</button>
                     </form>
                 </td>
             </tr>
