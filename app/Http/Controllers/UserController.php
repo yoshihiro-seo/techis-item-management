@@ -39,9 +39,32 @@ class UserController extends Controller
 
     // ユーザー情報の更新
     public function update(Request $request) {
-        $user = User::find($request->id);
-        // バリデーション追加
 
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required',
+
+            // 現在のパスワードは、新しいパスワードか確認用のパスワードが入力されていれば必須
+            'currentPassword' => 'required_with:newPassword,newPassword2',
+
+            // 新しいパスワードは、現在のパスワードか確認用のパスワードが入力されていれば必須/ ８文字以上で設定すること、文字列であること
+            'newPassword' => 'required_with:currentPassword,newPassword2|min:8|string',
+
+            // 確認用のパスワードは、現在のパスワードか新しいパスワードが入力されていれば必須
+            'newPassword2' => 'required_with:currentPassword,newPassword',
+        ],
+        [
+            'name.required' => '名前を入力して下さい。',
+            'email.required' => 'メールアドレスを入力して下さい。',
+            'newPassword.min' => '新しいパスワードは８文字以上で設定して下さい。',
+
+            'currentPassword.required_with' => '①現在のパスワードを入力して下さい。',
+            'newPassword.required_with' => '②新しいパスワードを入力して下さい。',
+            'newPassword2.required_with' => '③確認用パスワードを入力して下さい。',
+        ]);
+
+        $user = User::find($request->id);
+        
         if(!$request->filled('currentPassword')){
             $user->name = $request->name;
             $user->email = $request->email;
@@ -57,14 +80,13 @@ class UserController extends Controller
                 $user->save();
             } else {
                 // error
-                echo "現在のパスワードが違っています。";
+                return redirect()->back()->withErrors("現在のパスワードが違っています。")->withInput();
             } 
         } else {
-            echo "新しいパスワードと確認用パスワードは同じ値を入力してください。";
-            exit;
+                return redirect()->back()->withErrors("新しいパスワードと確認用パスワードは同じ値を入力してください。")->withInput();
         }
-        // ログイン画面にリダイレクト
-        return redirect('/login');
+        // ユーザー一覧画面にリダイレクト
+        return redirect('/user');
     }
 
     // ユーザー削除

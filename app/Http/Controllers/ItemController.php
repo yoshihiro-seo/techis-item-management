@@ -21,12 +21,36 @@ class ItemController extends Controller
     /**
      * 商品一覧画面
      */
-    public function index()
+    // public function index()
+    // {
+    //     // 商品一覧取得
+    //     $items = Item::orderBy('id', 'asc')->paginate(10);
+    //     return view('item.index', [
+    //         'items' => $items,
+    //     ]);
+    // }
+
+    public function index(Request $request)
     {
         // 商品一覧取得
         $items = Item::orderBy('id', 'asc')->paginate(10);
-        return view('item.index', [
-            'items' => $items,
+
+         /* キーワードから検索処理 */
+         // 任意の変数に受け取った送信された情報を代入します
+         // htmlのinputタグにはname属性に対して'keyword'と設定されているため
+         // $keywordへ$requestの中から、nameが'keyword'のinputを代入
+
+         $keyword = $request->input('keyword');
+         $keyword2 = $request->input('keyword2');
+         if(!empty($keyword)) { //$keywordの中身が空ではない場合に検索処理を実行
+            $items = Item::where('name', 'LIKE', "%".$keyword."%")->orWhere('author', 'LIKE', "%".$keyword."%")->orwhere('price', 'LIKE', "%".$keyword."%")->paginate(10);
+         } 
+            elseif (!empty($keyword2)) {
+                $items = Item::where('type', '=', $keyword2)->paginate(10);
+         }
+
+         return view('item.index', [
+                    'items' => $items,
         ]);
     }
 
@@ -134,5 +158,8 @@ class ItemController extends Controller
 
         return redirect('/items');
     }
+
+
+    
 }
 

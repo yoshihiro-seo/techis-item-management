@@ -27,6 +27,12 @@ Route::prefix('items')->group(function () {
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add'])->middleware(['auth']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add'])->middleware(['auth']);
 
+    // 商品検索
+    Route::get('/search', [App\Http\Controllers\ItemController::class, 'index'])->middleware(['auth']);
+
+    // 商品検索(ジャンル)
+    Route::get('/search/type', [App\Http\Controllers\ItemController::class, 'index'])->middleware(['auth']);
+
     // 商品詳細画面
     Route::get('/detail/{id}', [App\Http\Controllers\ItemController::class, 'detail'])->middleware(['auth']);
 
@@ -38,6 +44,7 @@ Route::prefix('items')->group(function () {
 
     // 商品情報削除
     Route::get('/delete', [App\Http\Controllers\ItemController::class, 'delete'])->middleware(['auth']);
+
 });
 
 

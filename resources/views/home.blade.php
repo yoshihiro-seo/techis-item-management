@@ -1,13 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', '書籍管理システム')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Home / 新着情報</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>新たに追加・更新された書籍情報をお知らせします！</p>
+
+    
+
+
 @stop
 
 @section('css')

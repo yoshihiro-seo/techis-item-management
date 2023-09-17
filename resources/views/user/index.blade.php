@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'ユーザー一覧')
 
 <!-- ユーザー一覧画面 -->
 @section('content_header')
