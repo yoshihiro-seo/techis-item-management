@@ -15,7 +15,7 @@
 
                     
                     <div style="display:inline-flex">
-                        <!-- 検索機能 (タイトル・作者・価格)-->
+                        <!-- 検索機能 (タイトル・著者・価格)-->
                         <div>
                             <form action="/items/search" method="GET">
                             @csrf
@@ -65,7 +65,7 @@
                                 <th>ID</th>
                                 <th>タイトル</th>
                                 <th>ジャンル</th>
-                                <th>作者</th>
+                                <th>著者</th>
                                 <th>価格(円)</th>
                                 <th>更新日時</th>
                                 <!-- <th>お気に入り</th> -->
