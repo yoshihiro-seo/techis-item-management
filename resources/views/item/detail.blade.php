@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', '書籍詳細')
 
 
 <!-- 商品一覧画面に戻る -->
