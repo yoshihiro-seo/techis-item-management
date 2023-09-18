@@ -15,7 +15,7 @@
                 <th>ユーザーID</th>
                 <th>名前</th>
                 <th>メールアドレス</th>
-                <th>ステータス</th>
+                <th>権限</th>
                 <th></th>
             </tr>
         </thead>
