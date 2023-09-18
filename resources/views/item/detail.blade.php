@@ -65,7 +65,7 @@
                 </tr>
                 
                 <tr>
-                    <th>作者</th>
+                    <th>著者</th>
                     <td>
                         <div>{{$item->author}}</div>
                     </td>
