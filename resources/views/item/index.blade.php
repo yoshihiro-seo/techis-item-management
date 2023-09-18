@@ -20,7 +20,7 @@
                             <form action="/items/search" method="GET">
                             @csrf
 
-                                <input type="text" name="keyword" value="">
+                                <input type="text" name="keyword" value="{{ $keyword }}">
                                 <input type="submit" value="検索">
                             </form>
                         </div>
@@ -31,15 +31,15 @@
                             @csrf
                                 <select name="keyword2" id="keyword2" class="form-control" style="width: 100%">
                                     <option value="" selected hidden>ジャンルを選択</option>
-                                    <option value="1" @if(1 === (int)request('keyword2')) selected @endif>文学・文芸（小説など）</option>
-                                    <option value="2" @if(2 === (int)request('keyword2')) selected @endif>ビジネス</option>
-                                    <option value="3" @if(3 === (int)request('keyword2'))selected @endif>趣味・実用</option>
-                                    <option value="4" @if(4 === (int)request('keyword2')) selected @endif>専門書</option>
-                                    <option value="5" @if(5 === (int)request('keyword2')) selected @endif>学習参考書</option>
-                                    <option value="6" @if(6 === (int)request('keyword2')) selected @endif>絵本・児童書</option>
-                                    <option value="7" @if(7 === (int)request('keyword2'))selected @endif>コミックス</option>
-                                    <option value="8" @if(8 === (int)request('keyword2')) selected @endif>雑誌</option>
-                                    <option value="9" @if(9 === (int)request('keyword2')) selected @endif>その他</option>
+                                    <option value="1" {{ $keyword2 == 1 ? "selected" : ""}}>文学・文芸（小説など）</option>
+                                    <option value="2" {{ $keyword2 == 2 ? "selected" : ""}}>ビジネス</option>
+                                    <option value="3" {{ $keyword2 == 3 ? "selected" : ""}}>趣味・実用</option>
+                                    <option value="4" {{ $keyword2 == 4 ? "selected" : ""}}>専門書</option>
+                                    <option value="5" {{ $keyword2 == 5 ? "selected" : ""}}>学習参考書</option>
+                                    <option value="6" {{ $keyword2 == 6 ? "selected" : ""}}>絵本・児童書</option>
+                                    <option value="7" {{ $keyword2 == 7 ? "selected" : ""}}>コミックス</option>
+                                    <option value="8" {{ $keyword2 == 8 ? "selected" : ""}}>雑誌</option>
+                                    <option value="9" {{ $keyword2 == 9 ? "selected" : ""}}>その他</option>
                                 </select>
                                 <div class="">
                                     <button type="submit" class="btn btn-secondary ml-3 text-nowrap">ジャンル検索</button>

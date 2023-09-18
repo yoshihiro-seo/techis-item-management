@@ -29,54 +29,80 @@
             </div>
         @endif
 
-        <div class="card card-primary">
+        <div class="card card-body">
             <form action="/user/userUpdate" method="POST" id="userUpdate">
                 {{csrf_field()}}
-                <div>
-                    <label for="id">ユーザーID:</label>
-                    <input type="text" name="id" value="{{old('id', $user->id)}}" class="mb-3" readonly>
+                <div class="row mb-3">
+                    <label for="id" class="col-sm-3 col-form-label">ユーザーID:</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="id" value="{{old('id', $user->id)}}" class="mb-3 form-control-plaintext"" readonly>
+                    </div>
+                    
                 </div>
-                <div>
-                    <label for="name">名前:</label>
-                    <input type="text" name="name" value="{{old('name', $user->name)}}" class="mb-3">
+
+                <div class="row mb-3">
+                    <label for="name" class="col-sm-3 col-form-label">名前:</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="name" value="{{old('name', $user->name)}}" class="mb-3">
+                    </div>
                 </div>
-                <div>
-                    <label for="email">メールアドレス:</label>
-                    <input type="text" name="email" value="{{old('email', $user->email)}}" class="mb-3">
+
+                <div class="row mb-3">
+                    <label for="email" class="col-sm-3 col-form-label">メールアドレス:</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="email" value="{{old('email', $user->email)}}" class="mb-3">
+                    </div>
                 </div>
-                <div>
-                    <label for="password1">現在のパスワード:</label>
-                    <input type="password" name="currentPassword" value="" class="mb-3">
+
+                <div class="row mb-3">
+                    <label for="password1" class="col-sm-3 col-form-label">現在のパスワード:</label>
+                    <div class="col-sm-8">
+                        <input type="password" name="currentPassword" value="" class="mb-3">
+                    </div>
                 </div>
-                <div>
-                    <label for="password2">新しいパスワード:</label>
-                    <input type="password" name="newPassword" value="" class="mb-3">
+                
+                <div class="row mb-3">
+                    <label for="password2" class="col-sm-3 col-form-label">新しいパスワード:</label>
+                    <div class="col-sm-8">
+                        <input type="password" name="newPassword" value="" class="mb-3">
+                    </div>
                 </div>
-                <div>
-                    <label for="password3">パスワード（確認用）:</label>
-                    <input type="password" name="newPassword2" value="" class="mb-3">
+
+                <div class="row mb-3">
+                    <label for="password3" class="col-sm-3 col-form-label">パスワード（確認用）:</label>
+                    <div class="col-sm-8">
+                        <input type="password" name="newPassword2" value="" class="mb-3">
+                    </div>
                 </div>
-                <div>
-                    <label for="role">権限:</label>
-                        <div>
+
+                <div class="row mb-3">
+                    <label for="role" class="col-sm-3 col-form-label">権限:</label>
+                    <div class="mt-2">
+                        <div class="">
                             <label for="role0">一般ユーザー</label>
-                            <input type="radio" name="role" value="0" class="" @if(old('role', $user->role)== 0) checked @endif>
+                            <input type="radio" name="role" value="0" class="" 
+                                @if(old('role', $user->role)== 0) checked @endif
+                                {{ $loginuser->role == 0 ? "disabled" : ""}}>
                         </div>
-                        <div>
+                        <div class="">
                             <label for="role1">管理者</label>
-                            <input type="radio" name="role" value="1" class="" @if(old('role', $user->role)== 1) checked @endif>
+                            <input type="radio" name="role" value="1" class="" 
+                                @if(old('role', $user->role)== 1) checked @endif
+                                {{ $loginuser->role == 0 ? "disabled" : ""}}>
                         </div>
+                    </div>
                 </div>
+
                 <!-- 更新ボタン -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" form="userUpdate">更新</button>
+                    <button type="submit" class="btn btn-primary mr-5" form="userUpdate">更新</button>
+                    <button type="button" class="btn btn-primary" onclick="deleteForm()" form="userUpdate" {{ $loginuser->role == 0 ? "disabled" : ""}}>削除</button>
                 </div>
             </form>
 
             <!-- 削除ボタン -->
-            <form action="{{ url('user/delete') }}" method="GET">
+            <form action="{{ url('user/delete') }}" method="GET" name="deleteform">
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">削除</button>
                     <input type="hidden" name="id" value="{{$user->id}}">
                 </div>
             </form>
@@ -88,4 +114,10 @@
 @stop
 
 @section('js')
+<script>
+    function deleteForm() {
+        //alert("test");
+        document.deleteform.submit();
+    }
+</script>
 @stop

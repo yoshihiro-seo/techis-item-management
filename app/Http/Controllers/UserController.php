@@ -28,12 +28,15 @@ class UserController extends Controller
 
 
     public function edit(Request $request) {
+        $loginuser = Auth::user();
+        //dd($loginuser);
         
         // ユーザー一覧で指定されたIDのレコードを取得する
         $user = User::where('id', '=', $request->id)->first();
         
         return view('user.edit')->with([
             'user' => $user,
+            'loginuser' => $loginuser,
         ]);
     }
 

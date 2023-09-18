@@ -291,7 +291,7 @@ return [
 
     'menu' => [
         [
-            'text' => '商品一覧',
+            'text' => '書籍一覧',
             'url'  => 'items',
             'icon' => 'fas fa-gamepad',
         ],

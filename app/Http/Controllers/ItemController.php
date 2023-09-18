@@ -51,6 +51,8 @@ class ItemController extends Controller
 
          return view('item.index', [
                     'items' => $items,
+                    'keyword' => $keyword,
+                    'keyword2' => $keyword2,
         ]);
     }
 
