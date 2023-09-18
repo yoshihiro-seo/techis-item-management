@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', '商品登録')
+@section('title', '書籍登録')
 
 @section('content_header')
 <!-- 商品一覧画面に戻る -->
@@ -10,7 +10,7 @@
     </div>
 </form>
 <div class="mt-5">
-    <h1>商品登録</h1>
+    <h1>書籍登録</h1>
 </div>
 
 @stop
