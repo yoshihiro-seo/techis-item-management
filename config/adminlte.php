@@ -293,12 +293,12 @@ return [
         [
             'text' => '書籍一覧',
             'url'  => 'items',
-            'icon' => 'fas fa-gamepad',
+            'icon' => 'fas fa-book-open',
         ],
         [
             'text' => 'ユーザー一覧',
             'url' => 'user',
-            'icon' => 'fas fa-id-card',
+            'icon' => 'fas far fa-address-book',
         ]
 
         // AdminLTEデフォルト
