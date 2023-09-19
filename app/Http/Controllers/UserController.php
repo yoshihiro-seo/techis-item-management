@@ -51,7 +51,8 @@ class UserController extends Controller
             'currentPassword' => 'required_with:newPassword,newPassword2',
 
             // 新しいパスワードは、現在のパスワードか確認用のパスワードが入力されていれば必須/ ８文字以上で設定すること、文字列であること
-            'newPassword' => 'required_with:currentPassword,newPassword2|min:8|string',
+            'newPassword' => 'required_with:currentPassword,newPassword2|nullable|string|min:8 ',
+            
 
             // 確認用のパスワードは、現在のパスワードか新しいパスワードが入力されていれば必須
             'newPassword2' => 'required_with:currentPassword,newPassword',

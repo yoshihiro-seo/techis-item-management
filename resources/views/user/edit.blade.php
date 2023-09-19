@@ -82,13 +82,15 @@
                             <label for="role0">一般ユーザー</label>
                             <input type="radio" name="role" value="0" class="" 
                                 @if(old('role', $user->role)== 0) checked @endif
-                                {{ $loginuser->role == 0 ? "disabled" : ""}}>
+                                {{ $loginuser->role == 0 && $user->role == 1 ? "disabled" : ""}}>
                         </div>
+
                         <div class="">
                             <label for="role1">管理者</label>
                             <input type="radio" name="role" value="1" class="" 
                                 @if(old('role', $user->role)== 1) checked @endif
-                                {{ $loginuser->role == 0 ? "disabled" : ""}}>
+                                {{ $loginuser->role == 0 && $user->role == 1 ? "" : ($loginuser->role == 1 && $user->role == 0 ? "" : ($loginuser->role == 1 && $user->role == 1 ? "" :"disabled"))}}>
+                                <!-- {{ $loginuser->role == 0 ? "disabled" : ""}}> -->
                         </div>
                     </div>
                 </div>
