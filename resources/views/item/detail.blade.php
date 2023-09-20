@@ -24,21 +24,21 @@
         <table class=table style="font-size: 120%">
             <tbody>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">ID:</th>
                     <td>
                         <div>{{$item->id}}</div>
                     </td>
                 </tr>
 
                 <tr>
-                    <th>タイトル</th>
+                    <th>タイトル:</th>
                     <td>
                         <div>{{$item->name}}</div>
                     </td>
                 </tr>
 
                 <tr>
-                    <th>ジャンル</th>
+                    <th>ジャンル:</th>
                     <td>
                         <div>
                             @if($item->type === 1)
@@ -65,21 +65,21 @@
                 </tr>
                 
                 <tr>
-                    <th>著者</th>
+                    <th>著者:</th>
                     <td>
                         <div>{{$item->author}}</div>
                     </td>
                 </tr>
 
                 <tr>
-                    <th>価格</th>
+                    <th>価格:</th>
                     <td>
-                        <div>{{$item->price}}</div>
+                        <div>{{number_format($item->price)." 円"}}</div>
                     </td>
                 </tr>
 
                 <tr>
-                    <th>詳細</th>
+                    <th>詳細:</th>
                     <td>
                         <!-- <div>{{$item->detail}}</div> -->
                         <textarea name="detail" class="form-control" rows="10" style="white-space: pre-wrap;" disabled>{{$item->detail}}</textarea>
