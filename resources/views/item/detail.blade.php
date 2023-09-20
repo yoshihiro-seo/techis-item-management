@@ -82,7 +82,7 @@
                     <th>詳細</th>
                     <td>
                         <!-- <div>{{$item->detail}}</div> -->
-                        <textarea style="white-space:pre-wrap;">{{$item->detail}}</textarea>
+                        <textarea name="detail" class="span4" style="white-space: pre-wrap" disabled>{{$item->detail}}</textarea>
                     </td>
                 </tr>
             </tbody>
