@@ -81,7 +81,8 @@
                 <tr>
                     <th>詳細</th>
                     <td>
-                        <div>{{$item->detail}}</div>
+                        <!-- <div>{{$item->detail}}</div> -->
+                        <textarea style="white-space:pre-wrap;">{{$item->detail}}</textarea>
                     </td>
                 </tr>
             </tbody>
