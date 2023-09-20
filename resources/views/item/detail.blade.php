@@ -74,7 +74,7 @@
                 <tr>
                     <th>価格:</th>
                     <td>
-                        <div>{{$item->price."円"}}</div>
+                        <div>{{number_format($item->price)." 円"}}</div>
                     </td>
                 </tr>
 
