@@ -33,12 +33,12 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name">タイトル</label>
+                            <label for="name">タイトル:</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="タイトル" value="{{old('name')}}">
                         </div>
 
                         <div class="form-group">
-                            <label for="type">ジャンル</label>
+                            <label for="type">ジャンル:</label>
                                 <select name="type" id="type" class="form-control">
                                     <option value="" selected hidden>選択してください</option>
                                     <option value="1" @if(1 === (int)old('type')) selected @endif>文学・文芸（小説など）</option>
@@ -54,12 +54,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="author">著者</label>
+                            <label for="author">著者:</label>
                             <input type="text" class="form-control" id="author" name="author" placeholder="著者" value="{{old('author')}}">
                         </div>
 
                         <div class="form-group">
-                            <label for="price">価格</label>
+                            <label for="price">価格(円):</label>
                             <input type="text" class="form-control" id="price" name="price" placeholder="価格" value="{{old('price')}}">
                         </div>
 
