@@ -60,7 +60,8 @@
 
                         <div class="form-group">
                             <label for="price">価格</label>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="価格" value="{{number_format(old('price'))}}">
+                            <!-- <input type="text" class="form-control" id="price" name="price" placeholder="価格" value="{{number_format(old('price'))}}"> -->
+                            <input type="text" class="form-control" id="price" name="price" placeholder="価格" value="{{old('price')}}">
                         </div>
 
                         <div class="form-group">
