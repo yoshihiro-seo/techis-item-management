@@ -66,16 +66,16 @@ class ItemController extends Controller
             // バリデーション
             $this->validate($request, [
                 'name' => 'required|max:100',
-                'type'=> 'required | integer',
+                'type'=> 'required|integer',
                 'author'=> 'max:50',
-                'price'=> 'nullable | integer',
+                'price'=> 'nullable|integer',
                 'datail'=> 'max:500',
             ],
             [
                 'name.required' => 'タイトルは必須です。',
                 'type.required' => 'ジャンルを選択して下さい。',
                 'author.max: 50' => '著者は50文字以内で入力して下さい。',
-                'price.integer' => '価格は半角の数値で入力してください。',
+                'price.integer' => '価格は半角数字で入力してください。',
                 'detail.max: 500' => '詳細は500文字以内で入力して下さい。',
             ]);
 
@@ -136,7 +136,7 @@ class ItemController extends Controller
             'name.max:100' => '商品名は100文字以内で入力してください。',
             'type' => 'ジャンルは必須です。',
             'author.max:50' => '著者は50文字以内で入力してください。',
-            'price.integer' => '価格は半角の数値で入力してください。',
+            'price.integer' => '価格は半角数字で入力してください。',
             'detail.max:500' => '詳細は500文字以内で入力してください。'
         ]);
 
